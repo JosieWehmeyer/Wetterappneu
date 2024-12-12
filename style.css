@@ -1,0 +1,70 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(Startbild.jpg) no-repeat center center fixed #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+
+
+.app-main {
+    opacity: 8;
+    max-width: 500px;
+    background-color: darkolivegreen;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 300px;
+}
+
+
+#weather-output {
+    width: 95%;
+    background-color: darkgray;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.form-control {
+    width: 95%;
+    background-color: gray;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    background-color: gray;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+
+.weather-body {
+    margin-bottom: 15px;
+    background-color: darkgray;
+    border-radius: 5px;
+    height: 70px;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.city {
+    font-weight: bold;
+}
+
+
+

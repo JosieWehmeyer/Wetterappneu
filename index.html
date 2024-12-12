@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"href="style.css"> 
+    <title>Das Wetter wetterte</title>
+</head>
+<body>
+
+
+
+    <div class="app-main">
+
+       
+
+    <div class="container">
+        <div class="form-group">
+            <label for="city-input">Stadt eingeben</label>
+            <input type="text" class="form-control" id="city-input" placeholder="Stadt eingeben">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="fetchWeather()">Wetter abrufen</button>
+        <div id="weather-output" class="alert alert-info mt-3" style="display: none;"></div>
+    </div>
+    
+
+    <script>
+        function fetchWeather() {
+            const city = document.getElementById('city-input').value;
+            const apiKey = 'bab281d79e5f1e9755a68d754cc313e7'; // API-Schlüssel hier einfügen
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric&lang=de`;
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Netzwerkantwort war nicht ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayWeather(data);
+                })
+                .catch(error => console.error('Fehler:', error));
+        }
+
+        function displayWeather(data) {
+            const weatherOutput = document.getElementById('weather-output');
+            if (data && data.weather && data.main) {
+                weatherOutput.innerHTML = `
+                    <h2>Wetter in ${data.name}</h2> <br>
+                    <p>Temperatur: ${data.main.temp} °C</p>
+                    <p>Beschreibung: ${data.weather[0].description}</p>
+                `;
+                weatherOutput.style.display = 'block'; // Ausgabe anzeigen
+            } else {
+                weatherOutput.innerHTML = `<p>Stadt nicht gefunden.</p>`;
+                weatherOutput.style.display = 'block'; // Ausgabe anzeigen
+            }
+        }
+    </script>
+
+        <div class="weather-body">
+
+            <div class="location-details">
+                <div class="city" id="city">Die WetterApp: Das Wetter wetterte</div> <br> 
+                <div class="date" id="date">aktuell und übersichtlich</div>
+
+             </div>
+
+        <div class="weather-status">
+
+            <div class="temperatur" id="temperatur"></div>
+            <div class="min-max" id="min-max"></div>
+            <div class="weather" id="weather"></div>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
